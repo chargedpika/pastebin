@@ -1,0 +1,31 @@
+//
+//tan(a1+a2) = (h2-h1) / d
+//
+//d = (h2-h1) / tan(a1+a2)
+//
+// h1 = distance from floor to camera
+// h2 = distance from floor to target
+// a1 = angle from camera to whatever the camera is on (the angle the camera's at on the robot)
+// a2 = angle between the center of the camera's feed and where the goal is to it
+
+
+
+
+NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+NetworkTableEntry ty = table.getEntry("ty");
+double targetOffsetAngle_Vertical = ty.getDouble(0.0);
+
+// how many degrees back is your limelight rotated from perfectly vertical?
+double limelightMountAngleDegrees = 25.0;
+
+// distance from the center of the Limelight lens to the floor
+double limelightLensHeightInches = 20.0;
+
+// distance from the target to the floor
+double goalHeightInches = 60.0;
+
+double angleToGoalDegrees = limelightMountAngleDegrees + targetOffsetAngle_Vertical;
+double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
+
+//calculate distance
+double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches)/Math.tan(angleToGoalRadians);
