@@ -1,4 +1,5 @@
 // this doesnt line perfectly up. but just use as example
+// AND ITS IN GODDAMN C++ FIX THAT 
 float Kp = -0.1f;  // Proportional control constant
 
 std::shared_ptr<NetworkTable> table = NetworkTable::GetTable("limelight");
