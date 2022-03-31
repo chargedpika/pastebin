@@ -1,32 +1,35 @@
-//
-//tan(a1+a2) = (h2-h1) / d
-//
-//d = (h2-h1) / tan(a1+a2)
-//
-// h1 = distance from floor to camera (easy to find out)
-// h2 = distance from floor to target (8 ft, 8 in, which is 104 inches)
-// a1 = angle from camera to whatever the camera is on (the angle the camera's at on the robot)
-// a2 = angle between the center of the camera's feed and where the goal is to it 
-// (a2 changes constantly, you'll need to have the pipeline figure this one out)
+package frc.robot;
 
+import edu.wpi.first.networktables.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
-
-
-NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight-toast"); //;)
+public class limelightTesting {
+    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight-toast");
 NetworkTableEntry ty = table.getEntry("ty");
 double targetOffsetAngle_Vertical = ty.getDouble(0.0);
 
+// how high is your limelight off the ground?
+double limelightHeightInches = 27.5;
+
 // how many degrees back is your limelight rotated from perfectly vertical?
-double limelightMountAngleDegrees = 25.0;
+double limelightMountAngleDegrees = 30.0;
 
 // distance from the center of the Limelight lens to the floor
 double limelightLensHeightInches = 20.0;
 
 // distance from the target to the floor
-double goalHeightInches = 104.0;
+double goalHeightInches = 103.0;
 
 double angleToGoalDegrees = limelightMountAngleDegrees + targetOffsetAngle_Vertical;
 double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
 
 //calculate distance
-double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches)/Math.tan(angleToGoalRadians);
+double distanceFromLimelightToGoalInches = (goalHeightInches - limelightHeightInches)/Math.tan(angleToGoalRadians);
+
+    public void print() {
+        System.out.println(distanceFromLimelightToGoalInches);
+    }
+}
