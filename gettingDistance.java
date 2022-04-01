@@ -18,7 +18,7 @@ double limelightHeightInches = 27.5;
 double limelightMountAngleDegrees = 30.0;
 
 // distance from the center of the Limelight lens to the floor
-double limelightLensHeightInches = 20.0;
+double limelightLensHeightInches = 27.9375;
 
 // distance from the target to the floor
 double goalHeightInches = 103.0;
