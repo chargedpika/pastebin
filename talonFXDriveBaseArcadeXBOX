@@ -1,0 +1,39 @@
+// Copyright ME
+
+package frc.robot;
+
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.ctre.phoenix.motorcontrol.IMotorController;
+import com.ctre.phoenix.motorcontrol.can.TalonFX
+
+public class Robot extends TimedRobot {
+  TalonFX left1 = new TalonFX(2);
+  TalonFX left2 = new TalonFX(3);
+  TalonFX right1 = new TalonFX(4);
+  TalonFX right2 = new TalonFX(5);
+  void follow(left2 left1);
+  void follow(right2 right1); //this shit's not gonna work but if it does just shoot me on the spot
+       void valueUpdated();
+  
+  
+  private final DifferentialDrive m_robotDrive = new DifferentialDrive(left1, right1);
+  private final XboxController m_driverController = new XboxController(0);
+
+  @Override
+  public void robotInit() {
+    // We need to invert one side of the drivetrain so that positive voltages
+    // result in both sides moving forward. Depending on how your robot's
+    // gearbox is constructed, you might have to invert the left side instead.
+    m_rightMotor.setInverted(true);
+  }
+
+  @Override
+  public void teleopPeriodic() {
+    // Drive with split arcade drive.
+    // That means that the Y axis of the left stick moves forward
+    // and backward, and the X of the right stick turns left and right.
+    m_robotDrive.arcadeDrive(-m_driverController.getLeftY(), m_driverController.getRightX());
+  }
+}
