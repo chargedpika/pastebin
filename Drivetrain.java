@@ -1,25 +1,24 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
-package edu.wpi.first.wpilibj.examples.swervebot;
+package frc.robot
+//package edu.wpi.first.wpilibj.examples.swervebot;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
-import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogGyro; // replace this
 
 /** Represents a swerve drive style drivetrain. */
 public class Drivetrain {
   public static final double kMaxSpeed = 3.0; // 3 meters per second
   public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
 
-  private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);
-  private final Translation2d m_frontRightLocation = new Translation2d(0.381, -0.381);
-  private final Translation2d m_backLeftLocation = new Translation2d(-0.381, 0.381);
-  private final Translation2d m_backRightLocation = new Translation2d(-0.381, -0.381);
+  //this is what creates the locations of the swerve "motors". think of it like a grid (looking at it from the bottom?//
+  private final Translation2d m_frontLeftLocation = new Translation2d(1, 1);
+  private final Translation2d m_frontRightLocation = new Translation2d(1, -1);
+  private final Translation2d m_backLeftLocation = new Translation2d(-1, 1);
+  private final Translation2d m_backRightLocation = new Translation2d(-1, -1);
 
+  //these are the sets of motors that make up each swerve module. the actual "swerve module" might be deprecated
   private final SwerveModule m_frontLeft = new SwerveModule(1, 2, 0, 1, 2, 3);
   private final SwerveModule m_frontRight = new SwerveModule(3, 4, 4, 5, 6, 7);
   private final SwerveModule m_backLeft = new SwerveModule(5, 6, 8, 9, 10, 11);
