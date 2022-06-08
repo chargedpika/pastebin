@@ -18,7 +18,7 @@ public class Drivetrain {
   private final Translation2d m_backLeftLocation = new Translation2d(-1, 1);
   private final Translation2d m_backRightLocation = new Translation2d(-1, -1);
 
-  //these are the sets of motors that make up each swerve module. the actual "swerve module" might be deprecated
+  //these are the sets of motors that make up each swerve module.
   private final SwerveModule m_frontLeft = new SwerveModule(1, 2, 0, 1, 2, 3);
   private final SwerveModule m_frontRight = new SwerveModule(3, 4, 4, 5, 6, 7);
   private final SwerveModule m_backLeft = new SwerveModule(5, 6, 8, 9, 10, 11);
