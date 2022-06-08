@@ -12,7 +12,7 @@ public class Drivetrain {
   public static final double kMaxSpeed = 3.0; // 3 meters per second
   public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
 
-  //this is what creates the locations of the swerve "motors". think of it like a grid (looking at it from the bottom?//
+  //this is what creates the locations of the swerve "motors". think of it like a grid (looking at it from the bottom?)//
   private final Translation2d m_frontLeftLocation = new Translation2d(1, 1);
   private final Translation2d m_frontRightLocation = new Translation2d(1, -1);
   private final Translation2d m_backLeftLocation = new Translation2d(-1, 1);
